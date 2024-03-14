@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('uf');
-            $table->string('idade');
-            $table->unsignedBigInteger('id_ingresso');
-            $table->foregin('id_ingresso')->references('id')->on('ingressos');
+            $table->date('data_nascto');
+            $table->unsignedBigInteger('id_ingresso')->nullable();
+            $table->foreign('id_ingresso')->references('id')->on('ingressos');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

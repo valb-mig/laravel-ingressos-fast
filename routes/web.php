@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Pages\{
+    Catalogo\CatalogoController,
+    Filme\FilmeController
+};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[
+    CatalogoController::class, 'index'
+])->name('catalogo');
+
+Route::get('/filme/{id}',[
+    FilmeController::class, 'index'
+]);
