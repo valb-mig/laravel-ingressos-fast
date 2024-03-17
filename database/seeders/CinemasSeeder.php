@@ -4,12 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CinemasSeeder extends Seeder
 {
-    use WithoutModelEvents;
-    
     public function run(): void
     {
         $cinemas = [
@@ -29,17 +26,25 @@ class CinemasSeeder extends Seeder
                 'rua_cinema'  => 'Rua do exemplo n° 15'
             ],
         ];
-            
-        foreach($cinemas as $cinema)
-        {
-            DB::table('cinemas')->insert([
-                'nome_cinema'   => $cinema['nome_cinema'],
-                'uf_cinema'     => $cinema['uf_cinema'],
-                'rua_cinema'    => $cinema['rua_cinema'],
-                'status_cinema' => 'A',
-                'updated_at'    => now(),
-                'created_at'    => now()
-            ]);
+
+        DB::beginTransaction();
+
+        try {
+            foreach ($cinemas as $cinema) {
+                DB::table('cinemas')->insertOrIgnore([
+                    'nome_cinema'   => $cinema['nome_cinema'],
+                    'uf_cinema'     => $cinema['uf_cinema'],
+                    'rua_cinema'    => $cinema['rua_cinema'],
+                    'status_cinema' => 'A',
+                    'updated_at'    => now(),
+                    'created_at'    => now()
+                ]);
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
         }
     }
 }

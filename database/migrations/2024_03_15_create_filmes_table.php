@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('filmes', function (Blueprint $table) {
             $table->id();
             $table->string('nome_filme');
+            $table->string('descricao_filme');
+            $table->string('image_path');
             $table->enum('status_filme',['A', 'I'])->default('A'); // A = Ativo | I = Inativo
             $table->timestamps();
         });
