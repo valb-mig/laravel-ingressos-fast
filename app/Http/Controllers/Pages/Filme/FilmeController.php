@@ -18,9 +18,9 @@ class FilmeController extends Controller
             return redirect()->route('catalogo');
         }
 
-        $ingressos = FilmeHelper::getIngressosPorFilme($this->uf);
-        $cinemas = FilmeHelper::getCinemasPorFilme($this->uf, $id);
-        
+        $ingressos = FilmeHelper::getIngressosPorFilme($this->uf, $id);
+        $cinemas   = FilmeHelper::getCinemasPorFilme($this->uf, $id);
+
         return view('pages.filme.index', [
             'filme'     => $filme,
             'ingressos' => $ingressos,
