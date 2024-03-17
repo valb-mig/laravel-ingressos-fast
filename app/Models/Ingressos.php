@@ -9,7 +9,7 @@ class Ingressos extends Model
 {
     use HasFactory;
 
-    protected $table      = 'ingressos';
+    protected $table      = 'tb_ingressos';
     protected $primaryKey = 'id';
     public    $timestamps = true;
 

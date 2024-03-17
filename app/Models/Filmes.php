@@ -9,7 +9,7 @@ class Filmes extends Model
 {
     use HasFactory;
 
-    protected $table      = 'filmes';
+    protected $table      = 'tb_filmes';
     protected $primaryKey = 'id';
     public    $timestamps = true;
 
