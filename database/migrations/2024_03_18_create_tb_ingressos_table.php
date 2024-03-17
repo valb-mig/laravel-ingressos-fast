@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ingressos', function (Blueprint $table) {
+        Schema::create('tb_ingressos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_filme')->nullable();
-            $table->foreign('id_filme')->references('id')->on('filmes');
+            $table->foreign('id_filme')->references('id')->on('tb_filmes');
             $table->unsignedBigInteger('id_sala')->nullable();
-            $table->foreign('id_sala')->references('id')->on('salas');
+            $table->foreign('id_sala')->references('id')->on('tb_salas');
             $table->unsignedBigInteger('id_cinema')->nullable();
-            $table->foreign('id_cinema')->references('id')->on('cinemas');
+            $table->foreign('id_cinema')->references('id')->on('tb_cinemas');
             $table->integer('qtd_ingressos');
             $table->date('validade_ingresso');
             $table->time('hora_entrada');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingressos');
+        Schema::dropIfExists('tb_ingressos');
     }
 };

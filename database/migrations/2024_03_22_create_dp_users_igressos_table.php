@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('filmes', function (Blueprint $table) {
+        Schema::create('dp_users_ingressos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_filme');
-            $table->string('descricao_filme');
-            $table->string('image_path');
-            $table->enum('status_filme',['A', 'I'])->default('A'); // A = Ativo | I = Inativo
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('tb_users');
+            $table->unsignedBigInteger('id_ingresso')->nullable();
+            $table->foreign('id_ingresso')->references('id')->on('tb_ingressos');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('filmes');
+        Schema::dropIfExists('dp_users_ingressos');
     }
 };

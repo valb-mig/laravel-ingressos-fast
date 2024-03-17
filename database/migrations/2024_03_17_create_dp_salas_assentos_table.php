@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cinemas', function (Blueprint $table) {
+        Schema::create('dp_salas_assentos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_cinema');
-            $table->string('uf_cinema');
-            $table->string('rua_cinema');
-            $table->enum('status_cinema', ['A','F'])->default('A'); // A = Abreto | F = Fechado
+            $table->string('nome_assento');
+            $table->enum('status_assento', ['A', 'I'])->default('A');
+            $table->unsignedBigInteger('id_sala');
+            $table->foreign('id_sala')->references('id')->on('tb_salas');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cinemas');
+        Schema::dropIfExists('dp_salas_assentos');
     }
 };

@@ -31,7 +31,7 @@ class CinemasSeeder extends Seeder
 
         try {
             foreach ($cinemas as $cinema) {
-                DB::table('cinemas')->insertOrIgnore([
+                DB::table('tb_cinemas')->insertOrIgnore([
                     'nome_cinema'   => $cinema['nome_cinema'],
                     'uf_cinema'     => $cinema['uf_cinema'],
                     'rua_cinema'    => $cinema['rua_cinema'],

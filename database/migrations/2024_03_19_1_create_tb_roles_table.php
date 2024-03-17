@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salas_assentos', function (Blueprint $table) {
+        Schema::create('tb_roles', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_assento');
-            $table->enum('status_assento', ['A', 'I'])->default('A');
-            $table->unsignedBigInteger('id_sala');
-            $table->foreign('id_sala')->references('id')->on('salas');
+            $table->string('role');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salas_assentos');
+        Schema::dropIfExists('tb_roles');
     }
 };

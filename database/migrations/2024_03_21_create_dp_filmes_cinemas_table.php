@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salas', function (Blueprint $table) {
+        Schema::create('dp_filmes_cinemas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_sala');
-            $table->enum('status_sala',['A', 'I'])->default('A'); // A = Ativa | I = Inativa
-            $table->unsignedBigInteger('id_cinema');
-            $table->foreign('id_cinema')->references('id')->on('cinemas');
             $table->unsignedBigInteger('id_filme');
-            $table->foreign('id_filme')->references('id')->on('filmes');
+            $table->foreign('id_filme')->references('id')->on('tb_filmes');
+            $table->unsignedBigInteger('id_cinema');
+            $table->foreign('id_cinema')->references('id')->on('tb_cinemas');
+            $table->enum('status_filme', ['A', 'I'])->default('A'); // A = Ativo | I = Inativo
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salas');
+        Schema::dropIfExists('dp_filmes_cinemas');
     }
 };

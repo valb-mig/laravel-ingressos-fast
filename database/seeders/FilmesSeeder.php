@@ -29,7 +29,7 @@ class FilmesSeeder extends Seeder
         {
             foreach($filmes as $filme)
             {
-                DB::table('filmes')->insert([
+                DB::table('tb_filmes')->insert([
                     'nome_filme'      => $filme['nome_filme'],
                     'descricao_filme' => $filme['descricao_filme'],
                     'image_path'      => $filme['image_path'],
