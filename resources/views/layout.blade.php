@@ -9,13 +9,7 @@
     <title>🎟️ Ingressos (Fast) | Catálogo</title>
 </head>
 <body class="bg-slate-800">
-    <header class="flex justify-center lg:justify-between bg-slate-700 text-slate-200 items-center w-full h-[4rem] px-2 mb-8">
-        <a class="text-2xl flex items-center bg-slate-600 p-2 rounded gap-2" href="/">
-            <i class="fa-solid fa-ticket rotate-45"></i>
-            Ingressos fast
-        </a>
-        {{-- <span>Recife / PE</span> --}}
-    </header>
+    @yield('header')
     <main id="content" class="flex h-full w-full text-slate-200">    
         @yield('content')
     </main>

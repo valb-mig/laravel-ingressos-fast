@@ -1,6 +1,8 @@
 <?php
 
-namespace Helpers;
+namespace App\Helpers;
+
+use Illuminate\Support\Facades\Auth;
 
 class GlobalHelper
 {
@@ -10,5 +12,10 @@ class GlobalHelper
             'uf' => 'PE',
             'cidade' => 'Recife'
         ];
+    }
+
+    public static function getUserData()
+    {
+        return Auth::user();
     }
 }
