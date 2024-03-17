@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('header')
+    <x-header/>
+@endsection
+
 @section('content')
     <div class="flex flex-col w-full px-2 md:px-[10vw]">
 
@@ -16,8 +20,8 @@
         </div>
 
         <section id="cinemas" class="flex flex-col gap-2 ">
-            <span class="text-center text-slate-400">Sessões disponéveis</span>
-            <div class="bg-slate-700 border border-slate-600 rounded p-2">
+            <span class="text-center text-slate-400">Cinemas disponéveis</span>
+            <div class="flex  flex-col gap-2 bg-slate-700 border border-slate-600 rounded p-2">
                 @if(count($cinemas) > 0)
                     @foreach ($cinemas as $cinema)
                             <div class="border border-slate-600 rounded">
@@ -31,18 +35,18 @@
                                     </span>
                                     <div class="flex">
                                         @if (count($ingressos) > 0)
-                                            <div class="flex flex-col w-full">
+                                            <div class="flex w-full gap-2">
                                             @foreach ($ingressos as $ingresso)
+                                                @if($cinema->id_cinema == $ingresso->id_cinema)
                                                     <a class="flex relative w-[113px] items-center" href="#">
-
                                                         <i class="fa-solid fa-ticket-simple text-[100px] text-slate-500">
                                                         </i>
-
                                                         <div class="flex flex-col w-full justify-center items-center gap-2 absolute text-slate-900">
                                                             <div>Sala:{{$ingresso->id_sala}}</div>
-                                                            <div class="text-sm">{{date('H:i', strtotime($ingresso->hora_entrada))}}</div>
+                                                            <div \class="text-sm">{{date('H:i', strtotime($ingresso->hora_entrada))}}</div>
                                                         </div>
                                                     </a>
+                                                @endif
                                             @endforeach
                                             </div>
                                         @else
