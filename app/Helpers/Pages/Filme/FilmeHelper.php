@@ -16,6 +16,7 @@ class FilmeHelper
             ->join('tb_filmes as f', 'f.id', '=', 'tb_ingressos.id_filme')
             ->join('tb_salas as s', 's.id', '=', 'tb_ingressos.id_sala')
             ->join('tb_cinemas as c', 'c.id', '=', 'tb_ingressos.id_cinema')
+            ->where('tb_ingressos.qtd_ingressos', '>', 0)
             ->where('f.id',            '=', $id)
             ->where('f.status_filme',  '=', 'A')
             ->where('s.status_sala',   '=', 'A')

@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Pages\ {
     Catalogo\CatalogoController,
-    Filme\FilmeController
+    Filme\FilmeController,
+    Checkout\CheckoutController
 };
 
 use App\Http\Controllers\Auth\ {
@@ -38,4 +39,12 @@ Route::get('/',[
 
 Route::get('/filme/{id}',[
     FilmeController::class, 'index'
+])->name('filme');
+
+Route::get('/checkout/{id}',[
+    CheckoutController::class, 'index'
+])->name('checkout');
+
+Route::post('/checkout/{id}',[
+    CheckoutController::class, 'checkout'
 ]);

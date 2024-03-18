@@ -38,7 +38,7 @@
                                             <div class="flex w-full gap-2">
                                             @foreach ($ingressos as $ingresso)
                                                 @if($cinema->id_cinema == $ingresso->id_cinema)
-                                                    <a class="flex relative w-[113px] items-center" href="#">
+                                                    <a class="flex relative w-[113px] items-center" href="/checkout/{{$ingresso->id}}">
                                                         <i class="fa-solid fa-ticket-simple text-[100px] text-slate-500">
                                                         </i>
                                                         <div class="flex flex-col w-full justify-center items-center gap-2 absolute text-slate-900">
@@ -51,9 +51,9 @@
                                             </div>
                                         @else
                                             <span class="flex w-full justify-center text-sm">
-                                                <b class="bg-yellow-700 text-yellow-300 border border-yellow-300 p-1 rounded">
-                                                    <i class="fa-solid fa-warning"></i>
-                                                    Sold out
+                                                <b class="bg-blue-700 text-blue-300 border border-blue-300 p-1 rounded">
+                                                    <i class="fa-solid fa-info"></i>
+                                                    Nenhum ingresso encontrado
                                                 </b>
                                             </span>
                                         @endif
