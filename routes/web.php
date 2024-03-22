@@ -8,43 +8,51 @@ use App\Http\Controllers\Pages\ {
     Checkout\CheckoutController
 };
 
+use App\Http\Controllers\Admin\ {
+    AdmFilmeController
+};
+
 use App\Http\Controllers\Auth\ {
     LoginController,
     RegisterController
 };
 
-// Auth
+/*
+*   Auth
+*/
 
-Route::get('/login',[
-    LoginController::class, 'index'
-])->name('login');
+Route::get('/login',  [ LoginController::class, 'index' ])->name('login');
+Route::post('/login', [ LoginController::class, 'login' ]);
 
-Route::post('/login',[
-    LoginController::class, 'login'
-]);
+Route::get('/register', [ RegisterController::class, 'index' ])->name('register');
+Route::post('/register',[ RegisterController::class, 'store' ]);
 
-Route::get('/register',[
-    RegisterController::class, 'index'
-])->name('register');
+/*
+*   Admin
+*/
 
-Route::post('/register',[
-    RegisterController::class, 'store'
-]);
+Route::group(['middleware' => 'check.admin'], function() {
 
-// Web
+    Route::prefix('admin')->group(function(){
+        Route::get('/catalogo',[ AdmFilmeController::class, 'index' ])->name('adm.catalogo');
+    });
 
-Route::get('/',[
-    CatalogoController::class, 'index'
-])->name('catalogo');
+    Route::get('/filme/{id}/get',    [ FilmeController::class, 'get'    ]);
+    Route::post('/filme/{id}/edit',  [ FilmeController::class, 'edit'   ]);
+    Route::post('/filme/{id}/remove',[ FilmeController::class, 'remove' ]);
+});
 
-Route::get('/filme/{id}',[
-    FilmeController::class, 'index'
-])->name('filme');
+/*
+*   Web
+*/
 
-Route::get('/checkout/{id}',[
-    CheckoutController::class, 'index'
-])->name('checkout');
+Route::get('/',[ CatalogoController::class, 'index' ])->name('catalogo');
+Route::get('/filme/{id}', [ FilmeController::class, 'index'  ])->name('filme');
 
-Route::post('/checkout/{id}',[
-    CheckoutController::class, 'checkout'
-]);
+
+/*
+*   Checkout
+*/
+
+Route::get('/checkout/{id}', [ CheckoutController::class, 'index'    ])->name('checkout');
+Route::post('/checkout/{id}',[ CheckoutController::class, 'checkout' ]);

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nome_filme');
             $table->string('descricao_filme');
             $table->string('image_path');
+            $table->unsignedBigInteger('id_usuario');
             $table->enum('status_filme',['A', 'I'])->default('A'); // A = Ativo | I = Inativo
             $table->timestamps();
         });

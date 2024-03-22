@@ -8,6 +8,8 @@ use App\Models\{
     FilmesCinemas
 };
 
+use Illuminate\Support\Facades\Auth;
+
 class FilmeHelper
 {
     public static function getIngressosPorFilme($uf, $id)
@@ -43,5 +45,29 @@ class FilmeHelper
     public static function getFilmePorID($id)
     {
         return Filmes::find($id);
+    }
+
+    public static function getAllFilmes() 
+    {
+        return Filmes::all();
+    }
+
+    public static function inativaFilmePorID($id) 
+    {
+        $filme = Filmes::find($id);
+        $filme->status_filme = 'I';
+        $filme->id_usuario   = Auth::id();
+        $filme->updated_at   = now();
+        $filme->save();
+    }
+
+    public static function editFilme($post) 
+    {
+    
+    }
+
+    public static function addFilme($post) 
+    {
+    
     }
 }

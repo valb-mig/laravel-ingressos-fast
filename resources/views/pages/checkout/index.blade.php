@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header')
-    <x-header/>
+    <x-layout.header/>
 @endsection
 
 @section('content')

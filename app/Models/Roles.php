@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Filmes extends Model
+class Roles extends Model
 {
     use HasFactory;
 
-    protected $table      = 'tb_filmes';
+    protected $table      = 'tb_roles';
     protected $primaryKey = 'id';
     public    $timestamps = true;
 
     protected $fillable = [
-        'nome_filme',
-        'status_filme',
-        'id_usuario'
+        'role'
     ];
 }

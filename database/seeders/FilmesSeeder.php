@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Filmes;
 
 class FilmesSeeder extends Seeder
 {
@@ -33,6 +34,7 @@ class FilmesSeeder extends Seeder
                     'nome_filme'      => $filme['nome_filme'],
                     'descricao_filme' => $filme['descricao_filme'],
                     'image_path'      => $filme['image_path'],
+                    'id_usuario'      => 999,
                     'status_filme'    => 'A',
                     'updated_at'      => now(),
                     'created_at'      => now()

@@ -27,4 +27,28 @@ class FilmeController extends Controller
             'cinemas'   => $cinemas
         ]);
     }
+
+    public function remove($id) 
+    {
+        $filme = FilmeHelper::getFilmePorID($id);
+
+        if(!$filme)
+        {
+            return redirect()->route('adm.catalogo');
+        }
+
+        FilmeHelper::inativaFilmePorID($id);
+        
+        return redirect()->route('adm.catalogo');
+    }
+
+    public function edit($id) 
+    {
+    
+    }
+
+    public function get() 
+    {
+    
+    }
 }
